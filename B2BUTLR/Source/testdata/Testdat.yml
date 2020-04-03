@@ -1,0 +1,22 @@
+B2B:
+  login:
+    email: "cognam@cognam.com"
+    firstName: "cognam"
+    lastname: "tech"
+    company: "cognam"
+    phoneNo: "48559598"
+    login:
+     abc:
+      xyz:
+       country: "india"
+  signUp:
+    email: "cognam@cognam.com"
+    firstName: "cognam"
+    lastname: "tech"
+    company: "cognam"
+    phoneNo: "48559598"
+    login:
+     abc:
+      xyz:
+       country: "india"
+    
