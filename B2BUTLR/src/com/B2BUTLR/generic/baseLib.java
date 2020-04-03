@@ -7,55 +7,57 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+
+
 
 
 public class baseLib {
 	
-	public WebDriver driver;//fianl driver   a
-	@BeforeMethod
-	public void  setUp()
+public  WebDriver driver;
+	
+	@BeforeClass
+	
+	public void setup()
 	{
 		String browserName = genericLib.getValue("browser");
-		if(browserName.equalsIgnoreCase("firefox"))
-		{
-			 driver = new FirefoxDriver();
-			 Reporter.log("Firefox Launched", true);
-		}
-		else if (browserName.equalsIgnoreCase("chrome")) {
-		System.setProperty("webdriver.chromedriver", "./exefiles/chromedriver.exe");
+	 
+	if(browserName.equalsIgnoreCase("firefox"))
+	{
+    System.setProperty("webdriver.gecko.driver", "./Source/exefiles/geckodriver.exe");
+	driver = new FirefoxDriver();
+	Reporter.log("Firefox launched", true);
+	}
+	else if(browserName.equalsIgnoreCase("Chrome"))
+	{
+		System.setProperty("webdriver.chrome.driver", "./Source/exefiles/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		Reporter.log("Chrome launched", true);
-			
-		}
-		else if (browserName.equalsIgnoreCase("ie")) {
-			System.setProperty("webdriver.iedriver", "./exefiles/IEDriverServer.exe");
-			driver = new InternetExplorerDriver();
-			Reporter.log("ie", true);
-			
-		}
-		waitStatementLib.iWaitForSec(driver, 20);
+	}
+	else if(browserName.equalsIgnoreCase("ie"))
+	{
+		System.setProperty("webdriver.ie.driver", "./Source/exefiles/IEDriverServer.exe");
+		driver = new InternetExplorerDriver();
+		Reporter.log("internetexplorer launched", true);
+	}
+	
+	String envName = genericLib.getValue("env");
+	
+	if(envName.equalsIgnoreCase("DEV"))
+	{
 		driver.navigate().to(genericLib.getValue("testurl"));
 	}
-
-	@AfterMethod
-	public void tearDown(ITestResult result )
+	else if(envName.equalsIgnoreCase("QA"))
 	{
-		String scriptName = result.getMethod().getMethodName();
-		if (result.isSuccess()) //true
-		{
-			System.out.println(scriptName+"Script pass");
-		}
-		else //fail
-		{
-			System.out.println(scriptName+"script fail");
-			screenShotLib slib = new screenShotLib();
-			slib.tekeScreenShot(driver, scriptName);
-			Reporter.log("browser closed", true);
-		}
-		driver.quit();
-
+		driver.navigate().to(genericLib.getValue("testurl1"));
+	}
+	else if(envName.equalsIgnoreCase("UAT"))
+	{
+		driver.navigate().to(genericLib.getValue("testurl2"));
+	}
+	waitStatementLib.iWaitForSec(driver, 30);
 	}
 
 

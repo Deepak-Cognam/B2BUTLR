@@ -21,7 +21,7 @@ public class yamlReader {
 		  
 	        Yaml yaml = new Yaml();
 	        
-	        Reader yamlFile = new FileReader("./Source/Testdata/Testdat.yml");
+	        Reader yamlFile = new FileReader("./Source/testdata/Testdat.yml");
 
 	        Map<String , Object> yamlMaps = yaml.load(yamlFile);
 	        
