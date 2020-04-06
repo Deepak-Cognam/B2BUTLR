@@ -6,35 +6,29 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+
 public class screenShotLib {
 
 	
-	static String filepath = "./config.properties";
-	/**
-	 * @description read value from properties file based on key
-	 * @param key
-	 * @return
-	 */
-	public static String getValue(String key)
-			{
-		String value = null;
-		try
-		{
-		Properties prop = new Properties();
-		prop.load(new FileInputStream(new File(filepath)));
-		value = prop.getProperty(key);
-		}
-		catch(FileNotFoundException e)
-		{
-		e.printStackTrace();	
-		}
-		catch(IOException e)
-		{
-		e.printStackTrace();	
-		}
-		return value;
-		
+	public void tekeScreenShot(WebDriver driver, String scriptName)
+	{
+	EventFiringWebDriver efw = new EventFiringWebDriver(driver);
+	File srcFile = efw.getScreenshotAs(OutputType.FILE);
+	File destFile = new File("./sceenshot/"+scriptName+".png");
+	
+	try
+	{
+		FileUtils.copyFile(srcFile, destFile);
 	}
-
+	catch(IOException e)
+	{
+		e.printStackTrace();
+	}
+	
+	}
 	
 }

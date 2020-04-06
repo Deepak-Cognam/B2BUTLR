@@ -9,14 +9,21 @@ B2B:
      abc:
       xyz:
        country: "india"
-  signUp:
-    email: "cognam@cognam.com"
-    firstName: "cognam"
-    lastname: "tech"
+  signUpValid:
     company: "cognam"
+    firstName: "cognam123"
+    lastname: "tech"
+    title: "QA Automation"
+    phoneNo: "4855959855"
+    businessEmail: "cognam@cognam.com"
+    password: "cognam@123"
+    
+  signUpFieldValidation:
+    company: "c"
+    firstName: "c"
+    lastname: "c"
+    title: "Q"
     phoneNo: "48559598"
-    login:
-     abc:
-      xyz:
-       country: "india"
+    businessEmail: "cognam@cognam"
+    password: "cognam"
     

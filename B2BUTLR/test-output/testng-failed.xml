@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="com.B2BUTLR.script.signUptest">
+        <methods>
+          <include name="setup"/>
+          <include name="signUpFieldValidation"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.B2BUTLR.script.signUptest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

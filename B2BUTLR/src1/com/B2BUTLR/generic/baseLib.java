@@ -4,14 +4,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.ITestResult;
 import org.testng.Reporter;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 public class baseLib {
 	
 public  WebDriver driver;
 	
-	@BeforeClass
+	@BeforeMethod
 	
 	public void setup()
 	{
@@ -54,5 +57,24 @@ public  WebDriver driver;
 	waitStatementLib.iWaitForSec(driver, 30);
 	}
 
+	
+	@AfterMethod
+	public void tearDown(ITestResult result )
+	{
+		String scriptName = result.getMethod().getMethodName();
+		if (result.isSuccess()) //true
+		{
+			System.out.println(scriptName+"Script pass");
+		}
+		else //fail
+		{
+			System.out.println(scriptName+"script fail");
+			screenShotLib slib = new screenShotLib();
+			slib.tekeScreenShot(driver, scriptName);
+			Reporter.log("browser closed", true);
+		}
+		driver.quit();
+
+	}
 
 }
