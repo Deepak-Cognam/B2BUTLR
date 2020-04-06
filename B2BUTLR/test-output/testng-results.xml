@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[Chrome launched]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="15351" started-at="2020-04-06T07:08:31Z" finished-at="2020-04-06T07:08:46Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="15351" started-at="2020-04-06T07:08:31Z" finished-at="2020-04-06T07:08:46Z">
+      <class name="com.B2BUTLR.script.signUptest">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.B2BUTLR.script.signUptest@2c039ac6]" name="setup" is-config="true" duration-ms="13398" started-at="2020-04-06T07:08:31Z" finished-at="2020-04-06T07:08:44Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Chrome launched]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="signUp()[pri:0, instance:com.B2BUTLR.script.signUptest@2c039ac6]" name="signUp" duration-ms="1929" started-at="2020-04-06T07:08:44Z" finished-at="2020-04-06T07:08:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- signUp -->
+      </class> <!-- com.B2BUTLR.script.signUptest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
