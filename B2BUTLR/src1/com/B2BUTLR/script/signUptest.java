@@ -1,4 +1,4 @@
-package com.B2BUTLR.scripts;
+package com.B2BUTLR.script;
 
 import java.util.HashMap;
 
@@ -8,9 +8,7 @@ import com.B2BUTLR.generic.baseLib;
 import com.B2BUTLR.generic.yamlReader;
 import com.B2BUTLR.pageobject.signUpPage;
 
-
-
-public class signUpTest extends baseLib {
+public class signUptest extends baseLib{
 	
 	@Test
 	public void signUp()
@@ -31,6 +29,5 @@ public class signUpTest extends baseLib {
       
       
 	}
-    
 
 }

@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class signUpPage {
 	
-
 	@FindBy(id = "GeneralContent_C067_ctl00_ctl00_tbEmail")
 	private WebElement EmailTxBx;
 	@FindBy(id = "GeneralContent_C067_ctl00_ctl00_tbFirstName")

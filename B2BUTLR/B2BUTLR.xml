@@ -4,7 +4,7 @@
   <test name="firefox">
    <parameter name="browserName" value="firefox">
     <classes>
-      <class name="com.B2BUTLR.script.SignUpTest"/>
+      <class name="com.B2BUTLR.scripts.signUpTest"/>
     </classes>
    </parameter> 
   </test>

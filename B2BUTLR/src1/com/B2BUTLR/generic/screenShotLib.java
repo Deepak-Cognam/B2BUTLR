@@ -6,7 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class genericLib {
+public class screenShotLib {
+
 	
 	static String filepath = "./config.properties";
 	/**
@@ -35,5 +36,5 @@ public class genericLib {
 		
 	}
 
-
+	
 }

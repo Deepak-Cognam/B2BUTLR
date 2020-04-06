@@ -35,5 +35,4 @@ public class waitStatementLib {
 		wait.until(ExpectedConditions.refreshed(ExpectedConditions.titleIs(Title)));
 	}
 
-
 }

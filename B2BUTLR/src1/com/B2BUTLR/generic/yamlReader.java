@@ -50,18 +50,16 @@ public class yamlReader {
 	private static void getAllValues(Map<String, Object> module, Map<String, String> inValues, HashMap<String,String> Fields) {
 		
 		for(String s : module.keySet())
-       {
-       	if(Fields.containsKey(s))
-       	{
-       		Fields.replace(s, module.get(s).toString());
-       	}
-       	else{
-       		getAllValues((Map<String, Object>)module.get(s),inValues, Fields);
-       	}
-       		
-       }
+      {
+      	if(Fields.containsKey(s))
+      	{
+      		Fields.replace(s, module.get(s).toString());
+      	}
+      	else{
+      		getAllValues((Map<String, Object>)module.get(s),inValues, Fields);
+      	}
+      		
+      }
 	}
-
-	
 
 }
