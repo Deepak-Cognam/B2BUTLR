@@ -1,29 +1,45 @@
-B2B:
-  login:
-    email: "cognam@cognam.com"
+
+login:
+    email: "deepak@mailinator.com"
     firstName: "cognam"
     lastname: "tech"
     company: "cognam"
     phoneNo: "48559598"
-    login:
-     abc:
-      xyz:
-       country: "india"
-  signUpValid:
+       
+signUp:
+  TC_01:
     company: "cognam"
-    firstName: "cognam123"
+    firstName: "cognam"
     lastname: "tech"
     title: "QA Automation"
+    businessEmail: "deepak@mailinator.com"
     phoneNo: "4855959855"
-    businessEmail: "cognam@cognam.com"
+    UserName: "abc123"
+    password: "cognam@123"
+
+  TC_02:
+    company: "cognam"
+    firstName: "cognam"
+    lastname: "tech"
+    title: "QA Automation"
+    businessEmail: "deepak@mailinator.com"
+    phoneNo: "4855959855"
+    UserName: "abc123456"
     password: "cognam@123"
     
-  signUpFieldValidation:
-    company: "c"
-    firstName: "c"
-    lastname: "c"
-    title: "Q"
-    phoneNo: "48559598"
-    businessEmail: "cognam@cognam"
-    password: "cognam"
+  TC_03:
+    company: "cognam"
+    firstName: "cognam"
+    lastname: "tech"
+    title: "QA Automation"
+    businessEmail: "Manpreet@mailinator.com"
+    phoneNo: "4855959855"
+    UserName: "abc123"
+    password: "cognam@123"
+    
+    
+    
+    
+    
+    
     

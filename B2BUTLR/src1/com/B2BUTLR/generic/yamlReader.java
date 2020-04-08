@@ -6,60 +6,54 @@ import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.testng.Reporter;
 import org.yaml.snakeyaml.Yaml;
 
 public class yamlReader {
+	private static Map<String, Object> object = null;
+	private static String ymlFilePath = "./Source/testdata/test.yml";
 	
-	  public static String yamlreader(HashMap<String,String> Fields, String parent) {
-		   
-		   Map<String, String> inValues = null;
-		    //
-		   String value = null;
-		  // String path = GenericLib.getValue("path");
-		   try
-		   {
-		  
-	        Yaml yaml = new Yaml();
-	        
-	        Reader yamlFile = new FileReader("./Source/testdata/Testdat.yml");
+	
+	
+	
+	public static String getValue(String token) throws FileNotFoundException {
+		Reader doc = null;
+		try {
+			doc = new FileReader(ymlFilePath);
+		} catch (FileNotFoundException e) {
+			Reporter.log("Wrong tier passed in 'Configuration' file'", true);
+			return null;
+		}
+		Yaml yaml = new Yaml();
+		if(object==null )
+		{ 
+		    object = (Map<String, Object>) yaml.load(doc);
+		    //System.out.println(object.toString());
+		}
+        return getMapValue(object, token);
+    }
+	
+	 public static String getMapValue(Map<String, Object> object, String token) {
+	        //check for proper yaml token string based on presence of '.'
+	        String[] st = token.split("\\.");
+	        return parseMap(object, token).get(st[st.length - 1]).toString();
+	    }
+	 
+	 private static Map<String, Object> parseMap(Map<String, Object> object,
+	            String token) {
+	        if (token.contains(".")) {
+	            String[] st = token.split("\\.");
+	            object = parseMap((Map<String, Object>) object.get(st[0]),
+	                    token.replace(st[0] + ".", ""));
+	        }
+	        return object;
+	    }
 
-	        Map<String , Object> yamlMaps = yaml.load(yamlFile);
-	        
-	        Map<String , Object> B2B = (Map<String, Object>) yamlMaps.get("B2B");
-	        inValues = new HashMap<String , String>();
-	        Map<String, Object> module = (Map<String, Object>) B2B.get(parent);
-	        
-	        
-	        getAllValues(module, inValues, Fields);
-	       	            
-		   }
-	            	
-		   catch(FileNotFoundException e)
-		   {
-			
-			   e.printStackTrace();
-		   
-		   }
-		   
-	       return value;
-	           
-	         }
-
-	   
-	   
-	private static void getAllValues(Map<String, Object> module, Map<String, String> inValues, HashMap<String,String> Fields) {
-		
-		for(String s : module.keySet())
-      {
-      	if(Fields.containsKey(s))
-      	{
-      		Fields.replace(s, module.get(s).toString());
-      	}
-      	else{
-      		getAllValues((Map<String, Object>)module.get(s),inValues, Fields);
-      	}
-      		
-      }
 	}
+	
+	
+	
+	
+	
 
-}
+

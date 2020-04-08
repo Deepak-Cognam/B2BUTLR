@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.ITestResult;
 import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -56,6 +57,8 @@ public  WebDriver driver;
 	}
 	waitStatementLib.iWaitForSec(driver, 30);
 	}
+	
+	
 
 	
 	@AfterMethod
@@ -70,7 +73,7 @@ public  WebDriver driver;
 		{
 			System.out.println(scriptName+"script fail");
 			screenShotLib slib = new screenShotLib();
-			slib.tekeScreenShot(driver, scriptName);
+			slib.takeScreenShot(driver, scriptName);
 			Reporter.log("browser closed", true);
 		}
 		driver.quit();

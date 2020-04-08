@@ -12,132 +12,71 @@ import org.testng.Reporter;
 public class signUpPage {
 	
 	@FindBy(xpath = "//input[@name='companyName']")
-	private WebElement Company;
+	private WebElement CompanyTxBx;
 	@FindBy(xpath = "//input[@name='firstName']")
 	private WebElement FirstNameTxBx;
 	@FindBy(xpath = "//input[@name='lastName']")
 	private WebElement LastNameTxBx;
 	@FindBy(xpath = "//input[@name='title']")
-	private WebElement Title;
+	private WebElement TitleTxBx;
 	@FindBy(xpath = "//input[@name='businessEmail']")
-	private WebElement BusinessEmail;
+	private WebElement BusinessEmailTxBx;
 	@FindBy(xpath = "//input[@name='phone']")
-	private WebElement PhoneTxBx;
+	private WebElement phoneTxBx;
 	@FindBy(xpath="//span[text()='Create Account']")
 	private WebElement SubmitBtn;
 	@FindBy(xpath="//input[@name='password']")
-	private WebElement Password;
-	@FindBy(xpath = "//p[text()='Company name length must be between 2 to 60.']")
-	private WebElement CompanyTxBxValidMsg;
-	@FindBy(xpath = "//p[text()='Company name length must be between 2 to 60.']")
-	private WebElement FirstNameTxBxValidMsg;
-	@FindBy(xpath = "//p[text()='Company name length must be between 2 to 60.']")
-	private WebElement LastnameTxBxValidMsg;
-	@FindBy(xpath = "//p[text()='Company name length must be between 2 to 60.']")
-	private WebElement TitleTxBxValidMsg;
-	@FindBy(xpath = "//p[text()='Company name length must be between 2 to 60.']")
-	private WebElement BusinessEmailTxBxValidMsg;
-	@FindBy(xpath = "//p[text()='Company name length must be between 2 to 60.']")
-	private WebElement PhoneTxBxValidMsg;
-	@FindBy(xpath = "//p[text()='Company name length must be between 2 to 60.']")
-	private WebElement passwordTxBxValidMsg;
+	private WebElement PasswordTxBx;
+	@FindBy(xpath = "//input[@name='username']")
+	private WebElement usernameTxBx;
 	
+	@FindBy(xpath = "//p[text()='already exists']")
+	private WebElement emailExists;
+	@FindBy(xpath = "//p[text()='Username already exists.']")
+	private WebElement UserNameExistMsg;
 	
-	public WebElement getInvalidCompanyMsg() {
-		return CompanyTxBxValidMsg;
+	public WebElement getUserNameExistMsg() {
+		return UserNameExistMsg;
 	}
 	
-	public WebElement getInvalidFirstnameMsg() {
-		return FirstNameTxBxValidMsg;
+	public WebElement getEmailExistsMsg() {
+		return emailExists;
 	}
 	
-	public WebElement getInvalidLastNameMsg() {
-		return LastnameTxBxValidMsg;
-	}
-	
-	public WebElement getInvalidTitleMsg() {
-		return TitleTxBxValidMsg;
-	}
-	
-	public WebElement getInvalidBusinessEmailMsg() {
-		return BusinessEmailTxBxValidMsg;
-	}
-	
-	public WebElement getInvalidPhoneMsg() {
-		return PhoneTxBxValidMsg;
-	}
-	
-	public WebElement getInvalidpasswordMsg() {
-		return passwordTxBxValidMsg;
-	}
-	
-	
-	
-	
-	
+		
  public signUpPage(WebDriver driver)
 	{
 	  PageFactory.initElements(driver, this);
 	}
+ 
+  public void validSignUp(String company, String firstName, String lastName, String title, String businessEmail, String phone, String userName, String password)
+  {
+	  CompanyTxBx.sendKeys(company);
+	  FirstNameTxBx.sendKeys(firstName);
+	  LastNameTxBx.sendKeys(lastName);
+	  TitleTxBx.sendKeys(title);
+	  BusinessEmailTxBx.sendKeys(businessEmail);
+	  phoneTxBx.sendKeys(phone);
+	  usernameTxBx.sendKeys(userName);
+	  PasswordTxBx.sendKeys(password);
+	  SubmitBtn.click();
+  }
+  
+   public void emailExist(String company, String firstName, String lastName, String title, String businessEmail, String phone, String userName, String password)
+   {
+	   CompanyTxBx.sendKeys(company);
+		  FirstNameTxBx.sendKeys(firstName);
+		  LastNameTxBx.sendKeys(lastName);
+		  TitleTxBx.sendKeys(title);
+		  BusinessEmailTxBx.sendKeys(businessEmail);
+		  phoneTxBx.sendKeys(phone);
+		  usernameTxBx.sendKeys(userName);
+		  PasswordTxBx.sendKeys(password);
+		  
+		  String expMsg="Username already exists.";
+			String actMsg=UserNameExistMsg.getText();
+			Assert.assertEquals(actMsg, expMsg);
+			Reporter.log("usename exists msg is verified",true);
+   }
 	
-	public void Signup(HashMap<String,String> Fields)
-	{
-	
-		Company.sendKeys(Fields.get("company"));
-		FirstNameTxBx.sendKeys(Fields.get("firstName"));
-		LastNameTxBx.sendKeys(Fields.get("lastname"));
-		Title.sendKeys(Fields.get("title"));
-		BusinessEmail.sendKeys(Fields.get("businessEmail"));
-		PhoneTxBx.sendKeys(Fields.get("phoneNo"));
-		Password.sendKeys(Fields.get("password"));
-	    SubmitBtn.click();
-	    
-	  }
-	
-	public void verifyingTxBxMsg(HashMap<String,String> Fields)
-	{
-		Company.sendKeys(Fields.get("company"));
-		String compTxBxExpMsg = "Company name length must be between 2 to 60.";
-		String compTxBxActMsg = CompanyTxBxValidMsg.getText();
-		Assert.assertEquals(compTxBxExpMsg, compTxBxActMsg);
-		Reporter.log("Invalid Company text msg is verified",true);
-		
-		FirstNameTxBx.sendKeys(Fields.get("firstName"));
-		String FirstNameTxBxExpMsg = "Company name length must be between 2 to 60.";
-		String FirstNameTxBxActMsg = CompanyTxBxValidMsg.getText();
-		Assert.assertEquals(FirstNameTxBxExpMsg, FirstNameTxBxActMsg);
-		Reporter.log("Invalid FirstName text msg is verified",true);
-		
-		LastNameTxBx.sendKeys(Fields.get("lastname"));
-		String LastNameTxBxExpMsg = "Company name length must be between 2 to 60.";
-		String LastNameTxBxActMsg = CompanyTxBxValidMsg.getText();
-		Assert.assertEquals(LastNameTxBxExpMsg, LastNameTxBxActMsg);
-		Reporter.log("Invalid LastName text msg is verified",true);
-		
-		Title.sendKeys(Fields.get("title"));
-		String TitleTxBxExpMsg = "Company name length must be between 2 to 60.";
-		String TitleTxBxActMsg = CompanyTxBxValidMsg.getText();
-		Assert.assertEquals(TitleTxBxExpMsg, TitleTxBxActMsg);
-		Reporter.log("Invalid title text msg is verified",true);
-		
-		BusinessEmail.sendKeys(Fields.get("businessEmail"));
-		String BusinessEmailTxBxExpMsg = "Company name length must be between 2 to 60.";
-		String BusinessEmailTxBxActMsg = CompanyTxBxValidMsg.getText();
-		Assert.assertEquals(BusinessEmailTxBxExpMsg, BusinessEmailTxBxActMsg);
-		Reporter.log("Invalid BusinessEmail text msg is verified",true);
-		
-		PhoneTxBx.sendKeys(Fields.get("phoneNo"));
-		String PhoneTxBxExpMsg = "Company name length must be between 2 to 60.";
-		String PhoneTxBxActMsg = CompanyTxBxValidMsg.getText();
-		Assert.assertEquals(PhoneTxBxExpMsg, PhoneTxBxActMsg);
-		Reporter.log("Invalid Phone text msg is verified",true);
-		
-		Password.sendKeys(Fields.get("password"));
-		String PasswordTxBxExpMsg = "Company name length must be between 2 to 60.";
-		String PasswordTxBxActMsg = CompanyTxBxValidMsg.getText();
-		Assert.assertEquals(PasswordTxBxExpMsg, PasswordTxBxActMsg);
-		Reporter.log("Invalid Password text msg is verified",true);
-	   // SubmitBtn.click();
 	}
-
-}
