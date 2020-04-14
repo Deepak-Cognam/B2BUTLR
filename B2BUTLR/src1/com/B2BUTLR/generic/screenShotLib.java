@@ -14,7 +14,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 public class screenShotLib {
 
 	
-	public void tekeScreenShot(WebDriver driver, String scriptName)
+	public void takeScreenShot(WebDriver driver, String scriptName)
 	{
 	EventFiringWebDriver efw = new EventFiringWebDriver(driver);
 	File srcFile = efw.getScreenshotAs(OutputType.FILE);
