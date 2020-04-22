@@ -10,13 +10,19 @@ import com.B2BUTLR.generic.baseLib;
 import com.B2BUTLR.generic.screenShotLib;
 import com.B2BUTLR.generic.waitStatementLib;
 import com.B2BUTLR.generic.yamlReader;
+import com.B2BUTLR.pageobject.loginPage;
 import com.B2BUTLR.pageobject.signUpPage;
 
 public class signUptest extends baseLib{
 	
+	@Test(priority=1)
+	public void createAccBtn()
+	{
+		loginPage lp = new loginPage(driver);
+		lp.clickonCreateAccBtn();		
+	}
 	
-	
-	@Test
+	@Test(priority=3)
 	public void ValidSignUp() throws FileNotFoundException {
 		
 		
@@ -35,11 +41,10 @@ public class signUptest extends baseLib{
 		
 		screenShotLib sc = new screenShotLib();
 		sc.takeScreenShot(driver, "validSignUp");
-		driver.quit();
 		
 	}
 	
-	@Test
+	@Test(priority=2)
 	public void EmailExistSignUp() throws FileNotFoundException
 	{
 		
